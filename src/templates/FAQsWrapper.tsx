@@ -25,7 +25,7 @@ export const getHeadConfig: GetHeadConfig<
   TemplateRenderProps
 > = (): HeadConfig => {
   return {
-    title: "Ecomm | FAQs",
+    title: "Great Clips | FAQs",
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
   };
