@@ -109,7 +109,7 @@ export const getHeadConfig: GetHeadConfig<
 const Static: Template<ExternalImageRenderData> = ({ externalImage }) => {
   return (
     <>
-      <PageLayout _site={undefined}>
+      <PageLayout>
         <Banner name={"Turtlehead Tacos"} />
         <div className="centered-container">
           <div className="section space-y-14 px-10">
