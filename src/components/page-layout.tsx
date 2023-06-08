@@ -4,7 +4,7 @@ import Header from "./header";
 import Footer from "./footer";
 
 type Props = {
-  _site: Site;
+  _site?: Site;
   children?: React.ReactNode;
 };
 
