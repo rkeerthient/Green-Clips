@@ -3,6 +3,7 @@ import {
   SortBy,
   SortType,
   useSearchActions,
+  useSearchState,
 } from "@yext/search-headless-react";
 import {
   StandardFacets,
@@ -20,6 +21,9 @@ const JobsPage = () => {
   const searchActions = useSearchActions();
 
   useLayoutEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const query = urlSearchParams.get("query");
+    query && searchActions.setQuery(query);
     searchActions.setVertical("jobs");
     searchActions.executeVerticalQuery();
   }, []);
