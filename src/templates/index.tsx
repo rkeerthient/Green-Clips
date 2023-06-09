@@ -15,10 +15,10 @@ import PageLayout from "../components/page-layout";
 import HomePage from "../components/pages/HomePage";
 
 export const config: TemplateConfig = {
-  name: "home",
+  name: "index",
 };
 export const getPath: GetPath<TemplateRenderProps> = () => {
-  return `index.html`;
+  return `index`;
 };
 
 export const getHeadConfig: GetHeadConfig<
