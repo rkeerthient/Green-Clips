@@ -17,13 +17,12 @@ import HomePage from "../components/pages/HomePage";
 export const config: TemplateConfig = {
   name: "index",
 };
+
 export const getPath: GetPath<TemplateRenderProps> = () => {
-  return `index`;
+  return `index.html`;
 };
 
-export const getHeadConfig: GetHeadConfig<
-  TemplateRenderProps
-> = (): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (): HeadConfig => {
   return {
     title: "Great Clips | Home",
     charset: "UTF-8",
