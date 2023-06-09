@@ -1,5 +1,7 @@
 import * as React from "react";
 import Cta from "../components/cta";
+import Ce_site from "../types/site";
+import { SearchBar } from "@yext/search-ui-react";
 
 type Link = {
   label: string;
@@ -12,40 +14,41 @@ const links: Link[] = [
     url: "/",
   },
   {
-    label: "About",
-    url: "/turtlehead-tacos",
+    label: "Jobs",
+    url: "/jobs",
+  },
+  {
+    label: "FAQs",
+    url: "/faqs",
   },
 ];
 
-const Header = () => {
+const Header = ({ _site }: any) => {
+  const { logo, name }: Ce_site = _site;
   const linkDoms = links.map((link) => (
     <div key={link.label}>
-      <a href={link.url} target="_blank" rel="noreferrer">
-        {link.label}
-      </a>
+      <a href={link.url}>{link.label}</a>
     </div>
   ));
 
   return (
     <>
       <div className="centered-container">
-        <nav className="py-6 flex items-center justify-between">
-          <img
-            src="https://cdn.fs.brandfolder.com/cache=expiry:604800/deY3VGFpSjC761Abjbfc"
-            width="50"
-            height="50"
-          ></img>
-          <div className="text-2xl font-semibold">Turtlehead Tacos</div>
-          <div className="flex gap-x-10 text-lg font-semibold">{linkDoms}</div>
-          <div className="space-x-5">
-            <Cta buttonText="Order Pickup" url="#" style="primary-cta"></Cta>
-            <Cta
-              buttonText="Order Delivery"
-              url="#"
-              style="secondary-cta"
-            ></Cta>
-          </div>
-        </nav>
+        <div className="flex justify-between items-center gap-12">
+          <nav className="py-6 flex items-center justify-start gap-4">
+            <img
+              src="//tbcdn.talentbrew.com/company/4594/v2_0/img/gc-logo-white.png"
+              alt="Great Clips Logo"
+            />
+            <div className="border border-[#089f45] h-16 "></div>
+            <div className="flex gap-x-10 text-lg font-semibold text-white">
+              {linkDoms}
+            </div>
+          </nav>
+          <SearchBar
+            customCssClasses={{ searchBarContainer: "-mb-2 flex-1" }}
+          ></SearchBar>
+        </div>
       </div>
     </>
   );

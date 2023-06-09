@@ -49,17 +49,13 @@ const FAQsPage = () => {
   }, []);
   return (
     <>
-      <div className="flex">
+      <div className="flex mt-4">
         <div className="w-64 shrink-0 mr-5 mt-4">
           <StandardFacets />
         </div>
         <div className="flex-grow">
           <div className="flex flex-col items-baseline">
-            <div className="flex flex-row gap-2 items-center mb-8 w-full">
-              <ResultsCount />
-              <hr className="flex-1" />
-              <SortDropdown sortConfig={sortConfig} />
-            </div>
+            <ResultsCount />
             <AppliedFilters />
           </div>
           <VerticalResults

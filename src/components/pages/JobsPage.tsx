@@ -15,6 +15,7 @@ import {
 } from "@yext/search-ui-react";
 import * as React from "react";
 import { useEffect } from "react";
+import JobCard from "../JobCard";
 
 const JobsPage = () => {
   const searchActions = useSearchActions();
@@ -56,20 +57,19 @@ const JobsPage = () => {
         </div>
         <div className="flex-grow">
           <div className="flex flex-col items-baseline">
-            <div className="flex flex-row gap-2 items-center mb-8 w-full">
-              <ResultsCount />
-              <hr className="flex-1" />
-            </div>
+            <ResultsCount />
             <AppliedFilters />
           </div>
           <VerticalResults
-            CardComponent={StandardCard}
+            CardComponent={JobCard}
             customCssClasses={{
-              verticalResultsContainer: `max-w-screen-xl`,
+              verticalResultsContainer: `max-w-screen-xl !-my-8`,
             }}
           />
-          <Pagination />
-          <LocationBias />
+          <div className="mt-16">
+            <Pagination />
+            <LocationBias />
+          </div>
         </div>
       </div>
     </>

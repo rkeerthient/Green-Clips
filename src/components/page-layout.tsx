@@ -1,5 +1,5 @@
 import * as React from "react";
-import Site from "../types/Site";
+import Site from "../types/site";
 import Header from "./header";
 import Footer from "./footer";
 import {
@@ -18,10 +18,12 @@ const PageLayout = ({ _site, children }: Props) => {
   return (
     <SearchHeadlessProvider searcher={searcher}>
       <div className="min-h-screen">
-        <Header _site={_site} />
+        <div className="bg-[#083b3a] ">
+          <Header _site={_site}></Header>
+        </div>
         {children}
         <Footer _site={_site}></Footer>
-      </div>{" "}
+      </div>
     </SearchHeadlessProvider>
   );
 };
