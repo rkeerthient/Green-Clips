@@ -6,14 +6,14 @@ import {
   DirectAnswer,
 } from "@yext/search-ui-react";
 import * as React from "react";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import FAQCard from "../FAQCard";
 import JobCard from "../JobCard";
 
 const HomePage = () => {
   const searchActions = useSearchActions();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     searchActions.setUniversal();
     searchActions.executeUniversalQuery();
   }, []);

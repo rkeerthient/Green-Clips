@@ -1,9 +1,4 @@
-import {
-  Direction,
-  SortBy,
-  SortType,
-  useSearchActions,
-} from "@yext/search-headless-react";
+import { useSearchActions } from "@yext/search-headless-react";
 import {
   StandardFacets,
   ResultsCount,
@@ -13,12 +8,12 @@ import {
   LocationBias,
 } from "@yext/search-ui-react";
 import * as React from "react";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import FAQCard from "../FAQCard";
 
 const FAQsPage = () => {
   const searchActions = useSearchActions();
-  useEffect(() => {
+  useLayoutEffect(() => {
     searchActions.setVertical("faqs");
     searchActions.executeVerticalQuery();
   }, []);

@@ -11,40 +11,15 @@ import {
   Pagination,
   VerticalResults,
   LocationBias,
-  StandardCard,
 } from "@yext/search-ui-react";
 import * as React from "react";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import JobCard from "../JobCard";
 
 const JobsPage = () => {
   const searchActions = useSearchActions();
-  const sortConfig: Record<string, { label: string; sortBy: SortBy }> = {
-    alpha_asc: {
-      label: "Name: A-Z",
-      sortBy: {
-        field: "name",
-        direction: Direction.Ascending,
-        type: SortType.Field,
-      },
-    },
-    alpha_desc: {
-      label: "Name: Z-A",
-      sortBy: {
-        field: "name",
-        direction: Direction.Descending,
-        type: SortType.Field,
-      },
-    },
-    relevance: {
-      label: "Relevance",
-      sortBy: {
-        type: SortType.Relevance,
-      },
-    },
-  };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     searchActions.setVertical("jobs");
     searchActions.executeVerticalQuery();
   }, []);
