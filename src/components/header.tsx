@@ -11,7 +11,7 @@ type Link = {
 const links: Link[] = [
   {
     label: "Home",
-    url: "/",
+    url: "/index",
   },
   {
     label: "Jobs",
@@ -24,7 +24,6 @@ const links: Link[] = [
 ];
 
 const Header = ({ _site }: any) => {
-  const { logo, name }: Ce_site = _site;
   const linkDoms = links.map((link) => (
     <div key={link.label}>
       <a href={link.url}>{link.label}</a>

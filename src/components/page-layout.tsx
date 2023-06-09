@@ -1,5 +1,4 @@
 import * as React from "react";
-import Site from "../types/site";
 import Header from "./header";
 import Footer from "./footer";
 import {
@@ -7,9 +6,10 @@ import {
   provideHeadless,
 } from "@yext/search-headless-react";
 import searchConfig from "./searchConfig";
+import Ce_site from "../types/site";
 
 type Props = {
-  _site?: Site;
+  _site?: Ce_site;
   children?: React.ReactNode;
 };
 const searcher = provideHeadless({ ...searchConfig });
