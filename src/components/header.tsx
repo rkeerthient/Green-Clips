@@ -11,7 +11,7 @@ type Link = {
 const links: Link[] = [
   {
     label: "Home",
-    url: "/index",
+    url: "/index.html",
   },
   {
     label: "Jobs",
