@@ -14,13 +14,13 @@ import {
   LocationBias,
 } from "@yext/search-ui-react";
 import * as React from "react";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import JobCard from "../JobCard";
 
 const JobsPage = () => {
   const searchActions = useSearchActions();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const query = urlSearchParams.get("query");
     query && searchActions.setQuery(query);
