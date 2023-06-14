@@ -13,6 +13,7 @@ import {
 } from "@yext/pages";
 import PageLayout from "../components/page-layout";
 import JobsPage from "../components/pages/JobsPage";
+import { useState } from "react";
 
 export const config: TemplateConfig = {
   name: "jobs",
@@ -35,12 +36,21 @@ const FAQsWrapper: Template<TemplateRenderProps> = ({
   document,
 }: TemplateRenderProps) => {
   const { _site } = document;
-
+  const [schemaData, setSchemaData] = useState();
+  const handleDataFromChild = (data: any) => {
+    setSchemaData(data);
+  };
   return (
     <>
+      {schemaData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+      )}
       <PageLayout _site={_site}>
         <div className="centered-container">
-          <JobsPage></JobsPage>
+          <JobsPage sendDataToParent={handleDataFromChild} />
         </div>
       </PageLayout>
     </>
