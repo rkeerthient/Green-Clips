@@ -9,6 +9,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import FAQCard from "../FAQCard";
 import JobCard from "../JobCard";
+import PromoCard from "../PromoCard";
 
 const HomePage = () => {
   const searchActions = useSearchActions();
@@ -36,6 +37,9 @@ const HomePage = () => {
             jobs: {
               CardComponent: JobCard,
               viewAllButton: true,
+            },
+            promo: {
+              CardComponent: PromoCard,
             },
           }}
         />
