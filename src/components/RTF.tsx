@@ -71,12 +71,22 @@ export default function RTF({
             },
             p: {
               props: {
-                className: "my-2",
+                className: "mt-6 mb-2",
               },
             },
             ul: {
               props: {
                 className: "list-disc list-inside",
+              },
+            },
+            li: {
+              props: {
+                className: "whitespace-nowrap w-fit",
+              },
+            },
+            ins: {
+              props: {
+                className: "mt-4",
               },
             },
           },

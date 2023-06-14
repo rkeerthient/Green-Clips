@@ -5,8 +5,14 @@ import { BsScissors } from "react-icons/bs";
 
 const JobCard = (props: CardProps<Job>) => {
   const { result } = props;
-  const { name, datePosted, c_jobAddress, c_locationName, landingPageUrl } =
-    result.rawData;
+  const {
+    name,
+    datePosted,
+    c_jobAddress,
+    c_locationName,
+    landingPageUrl,
+    slug,
+  } = result.rawData;
 
   return (
     <>
@@ -14,7 +20,7 @@ const JobCard = (props: CardProps<Job>) => {
         <div className="flex flex-row items-center justify-between">
           <div>
             <a
-              href={landingPageUrl}
+              href={slug}
               className="mb-3 font-normal text-2xl text-[#089f45] hover:border-b-2 border-[#089f45]"
             >
               {name}

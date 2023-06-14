@@ -21,6 +21,8 @@ import {
 import * as React from "react";
 import PageLayout from "../components/page-layout";
 import "../index.css";
+import RTF from "../components/RTF";
+import JobSchema from "../components/JobSchema";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -30,7 +32,18 @@ export const config: TemplateConfig = {
     $id: "my-stream-id-2",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
-    fields: ["id", "uid", "meta", "name"],
+    fields: [
+      "id",
+      "uid",
+      "meta",
+      "name",
+      "c_richDescription",
+      "slug",
+      "c_jobAddress",
+      "landingPageUrl",
+      "c_locationName",
+      "c_qualification",
+    ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
       entityTypes: ["job"],
@@ -98,13 +111,60 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
  * them in the src/templates folder as this is specific for true template files).
  */
 const Job: Template<TemplateRenderProps> = ({ document }) => {
-  const { _site, name } = document;
+  const {
+    _site,
+    name,
+    c_locationName,
+    c_richDescription,
+    c_jobAddress,
+    landingPageUrl,
+    c_qualification,
+  } = document;
 
   return (
     <>
+      <JobSchema document={document}></JobSchema>
       <PageLayout _site={_site}>
         <div className="centered-container">
-          <div className="section">{name}</div>
+          <div className="flex flex-col gap-y-6">
+            <div className="flex flex-col   text-[#089f45] text-3xl ">
+              <div className="font-bold">{name}</div>
+              <div className="font-light">
+                {c_jobAddress.city}, {c_jobAddress.region}
+              </div>
+            </div>
+            <div className="flex flex-row justify-start gap-x-4">
+              <a
+                href={landingPageUrl}
+                className="px-8 py-4 w-fit group  relative   bg-green-800 text-white font-bold hover:bg-orange-500 text-xl"
+              >
+                Apply
+              </a>
+              <a
+                href={landingPageUrl}
+                className="px-8 py-4 w-fit group  relative text-lg  bg-[#99cb39] text-[#083b3a] font-bold "
+              >
+                Save Job
+                <div className="h-1 bg-teal-900 absolute bottom-0 left-0 transition-width duration-75 group-hover:w-full"></div>
+              </a>
+            </div>
+            <div className="flex flex-col">
+              <div className="text-2xl font-bold text-[#089f45]">
+                Job Location
+              </div>
+              <div>{c_locationName}</div>
+              <div>{c_jobAddress.line1}</div>
+              <div>
+                {c_jobAddress.city}, {c_jobAddress.region}
+              </div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-[#089f45]">
+                Opportunity
+              </div>
+              <RTF>{c_richDescription}</RTF>
+            </div>
+          </div>
         </div>
       </PageLayout>
     </>
