@@ -37,9 +37,8 @@ const Header = ({ _site }: any) => {
     setPath(currentPath);
     return () => {};
   }, []);
-  
-  const handleSearch: onSearchFunc = (searchEventData) => {
 
+  const handleSearch: onSearchFunc = (searchEventData) => {
     const path = window.location.pathname;
     const queryParams = new URLSearchParams(window.location.search);
     console.log(path);
@@ -62,6 +61,7 @@ const Header = ({ _site }: any) => {
           <SearchBar
             // onSearch={handleSearch}
             customCssClasses={{ searchBarContainer: "-mb-2 flex-1" }}
+            hideRecentSearches={true}
           ></SearchBar>
         </div>
       </div>
