@@ -45,7 +45,7 @@ const Static: Template<TemplateRenderProps> = ({
       <PageLayout _site={_site}>
         <div className="centered-container">
           <div className="section space-y-14 px-10">
-            <HomePage></HomePage>
+            <HomePage _site={_site}></HomePage>
           </div>
         </div>
       </PageLayout>

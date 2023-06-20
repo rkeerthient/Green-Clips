@@ -4,7 +4,7 @@
     "entityIds": ["1965501431913028075"]
   },
   "source": "knowledgeGraph",
-  "fields": ["name", "logo", "c_footerImg"],
+  "fields": ["name", "logo", "c_footerImg", "photoGallery"],
   "localization": {
     "locales": ["en"],
     "primary": false
