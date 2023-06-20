@@ -16,10 +16,8 @@ const HomePage = (_site: any) => {
   const { photoGallery } = _site._site;
   const searchActions = useSearchActions();
   const results = useSearchState((state) => state.universal.verticals);
-  console.log(photoGallery);
   const universalLimits = {
-    faqs: 5,
-    jobs: 5,
+    faqs: 1,
   };
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
