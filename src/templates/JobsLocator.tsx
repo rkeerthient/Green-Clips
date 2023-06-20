@@ -19,7 +19,7 @@ export const getPath: GetPath<TemplateProps> = () => {
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = () => {
   return {
-    title: "Turtlehead Tacos Locations",
+    title: "Great Clips Jobs",
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
   };
