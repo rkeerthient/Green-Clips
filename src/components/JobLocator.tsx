@@ -50,21 +50,21 @@ const JobLocator = (): JSX.Element => {
     <>
       <div className="flex h-[calc(100vh-10px)] border my-4">
         <div className="flex w-1/3 flex-col">
-          <div className="p-4">
-            <span className="font-bold">Facets</span>
-
-            <hr className="my-2" />
-            <StandardFacets collapsible={true} defaultExpanded={false} />
-            <AppliedFilters />
+          <div className="flex flex-row gap-3 w-screen px-4 pt-3">
+            <div>
+              <AppliedFilters />
+              <StandardFacets
+                defaultExpanded={false}
+                customCssClasses={{ divider: "hidden" }}
+              />
+            </div>
           </div>
-          <div className="flex flex-col">
-            <VerticalResults
-              customCssClasses={{ verticalResultsContainer: "overflow-y-auto" }}
-              CardComponent={JobResCard}
-            />
-          </div>
+          <hr className="my-3" />
+          <VerticalResults
+            customCssClasses={{ verticalResultsContainer: "overflow-y-auto" }}
+            CardComponent={JobResCard}
+          />
         </div>
-
         <div className="w-2/3">
           <MapboxMap
             mapboxAccessToken={import.meta.env.YEXT_PUBLIC_MAP_API_KEY!}
