@@ -16,10 +16,10 @@ import JobsPage from "../components/pages/JobsPage";
 import { useState } from "react";
 
 export const config: TemplateConfig = {
-  name: "jobs",
+  name: "old_jobs",
 };
 export const getPath: GetPath<TemplateRenderProps> = () => {
-  return `jobs`;
+  return `old_jobs`;
 };
 
 export const getHeadConfig: GetHeadConfig<
