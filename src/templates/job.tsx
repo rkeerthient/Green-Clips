@@ -23,6 +23,7 @@ import PageLayout from "../components/page-layout";
 import "../index.css";
 import RTF from "../components/RTF";
 import JobSchema from "../components/JobSchema";
+import { useEffect } from "react";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -120,13 +121,12 @@ const Job: Template<TemplateRenderProps> = ({ document }) => {
     landingPageUrl,
     c_qualification,
   } = document;
-
   return (
     <>
       <JobSchema document={document}></JobSchema>
       <PageLayout _site={_site}>
         <div className="centered-container">
-          <div className="flex flex-col gap-y-6">
+          <div className="section flex flex-col gap-y-6">
             <div className="flex flex-col   text-[#089f45] text-3xl ">
               <div className="font-bold">{name}</div>
               <div className="font-light">

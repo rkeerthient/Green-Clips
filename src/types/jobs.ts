@@ -77,6 +77,7 @@ export default interface Job {
 	name: string,
 	c_jobAddress?: C_jobAddress,
 	c_locationName?: string,
+	c_qualification?: string,
 	c_richDescription?: string,
 	displayCoordinate?: Coordinate,
 	keywords?: string[],

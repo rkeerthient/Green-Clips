@@ -1,7 +1,7 @@
 import * as React from "react";
 import Cta from "../components/cta";
 import Ce_site from "../types/site";
-import { SearchBar } from "@yext/search-ui-react";
+import { SearchBar, onSearchFunc } from "@yext/search-ui-react";
 
 type Link = {
   label: string;
@@ -30,6 +30,22 @@ const Header = ({ _site }: any) => {
     </div>
   ));
 
+  const [path, setPath] = React.useState("");
+
+  React.useEffect(() => {
+    const currentPath = window.location.pathname;
+    setPath(currentPath);
+    return () => {};
+  }, []);
+
+  const handleSearch: onSearchFunc = (searchEventData) => {
+    console.log("inn");
+
+    const path = window.location.pathname;
+    const queryParams = new URLSearchParams(window.location.search);
+    console.log(path);
+  };
+
   return (
     <>
       <div className="centered-container">
@@ -45,6 +61,7 @@ const Header = ({ _site }: any) => {
             </div>
           </nav>
           <SearchBar
+            onSearch={handleSearch}
             customCssClasses={{ searchBarContainer: "-mb-2 flex-1" }}
           ></SearchBar>
         </div>
