@@ -13,16 +13,19 @@ import PromoCard from "../PromoCard";
 import { Image } from "@yext/pages/components";
 
 const HomePage = (_site: any) => {
-  console.log(JSON.stringify(_site));
   const { photoGallery } = _site._site;
   const searchActions = useSearchActions();
   const results = useSearchState((state) => state.universal.verticals);
   console.log(photoGallery);
-
+  const universalLimits = {
+    faqs: 5,
+    jobs: 5,
+  };
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const query = urlSearchParams.get("query");
     query && searchActions.setQuery(query);
+    searchActions.setUniversalLimit(universalLimits);
     searchActions.setUniversal();
     searchActions.executeUniversalQuery();
   }, []);
