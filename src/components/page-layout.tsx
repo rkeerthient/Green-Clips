@@ -26,7 +26,7 @@ const PageLayout = ({ _site, children }: Props) => {
         <Footer _site={_site}></Footer>
       </div>
       <div className="fixed bottom-10 right-10 z-50">
-        <ChatBot configId="greatclips_JOBS" />
+        <ChatBot configId={import.meta.env.YEXT_PUBLIC_BOT_ID} />
       </div>
     </SearchHeadlessProvider>
   );
