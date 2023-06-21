@@ -168,9 +168,11 @@ const Location: Template<TemplateRenderProps> = ({
               )}
             </div>
           </div>
-          <div className="w-1/2 text-center py-20  ">
-            <IsOpen document={document}></IsOpen>
-          </div>
+          {hours && (
+            <div className="w-1/2 text-center py-20  ">
+              <IsOpen document={document}></IsOpen>
+            </div>
+          )}
         </div>
         <div className="centered-container mt-16">
           <div className="section">
