@@ -33,6 +33,7 @@ import { Image } from "@yext/pages/components";
 import HoursText from "../components/HoursText";
 import IsOpen from "../components/IsOpen";
 import Carousel from "../components/Carousel";
+import Schema from "../components/Schema";
 /**
  * Required when Knowledge Graph data is used for a template.
  */
@@ -59,6 +60,8 @@ export const config: TemplateConfig = {
       "c_jobToLocation.c_qualification",
       "c_jobToLocation.slug",
       "c_jobToLocation.landingPageUrl",
+      "c_jobToLocation.datePosted",
+      "c_jobToLocation.c_richDescription",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -137,6 +140,7 @@ const Location: Template<TemplateRenderProps> = ({
   path,
   document,
 }) => {
+  const _cpy = document;
   const {
     _site,
     name,
@@ -153,6 +157,7 @@ const Location: Template<TemplateRenderProps> = ({
 
   return (
     <>
+      <Schema document={_cpy}></Schema>
       <PageLayout _site={_site}>
         <div className="flex flex-row  bg-[#eeeeee]">
           <div className="w-1/2 flex items-center justify-center  bg-white">
@@ -161,9 +166,11 @@ const Location: Template<TemplateRenderProps> = ({
               <h2 className="text-6xl font-light  ">
                 {address.extraDescription}
               </h2>
-              <p className="text-2xl">
-                <HoursText document={document} />
-              </p>
+              {hours && (
+                <p className="text-2xl">
+                  <HoursText document={document} />
+                </p>
+              )}
             </div>
           </div>
           <div className="w-1/2 text-center py-20  ">
@@ -200,7 +207,7 @@ const Location: Template<TemplateRenderProps> = ({
                 </div>
               </div>
               <div>
-                {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
+                {hours && <Hours title={"Store Hours"} hours={hours} />}
               </div>
               <div>
                 <Image image={photoGallery[6]} className="h-4/5"></Image>
