@@ -25,13 +25,14 @@ const PromoCard = (props: CardProps<Ce_promo>): JSX.Element => {
               </a>
             </div>
           ) : (
-            <div className="bg-[#9aca39] text-center p-4">
+            <div className="bg-[#9aca39] text-center relative">
               <Image image={primaryPhoto!}></Image>
               <a
                 href={c_primaryCTA!.link}
-                className="mx-auto text-center mt-4 text-lg  bg-[#083b3a] text-white font-bold px-4 py-2"
+                className=" top-4 left-2/4 transform -translate-x-2/4  mx-auto px-6 py-2 w-fit group  absolute text-lg  bg-[#99cb39] text-[#083b3a] font-bold "
               >
                 {c_primaryCTA!.label}
+                <div className="h-1 bg-teal-900 absolute bottom-0 left-0 transition-width duration-75 group-hover:w-full"></div>
               </a>
             </div>
           )}
