@@ -155,7 +155,7 @@ const Job: Template<TemplateRenderProps> = ({ document }) => {
                 Save Job
                 <div className="h-1 bg-teal-900 absolute bottom-0 left-0 transition-width duration-75 group-hover:w-full"></div>
               </a>
-              {c_jobToLocation.length && (
+              {c_jobToLocation && c_jobToLocation.length && (
                 <a
                   href={`/${c_jobToLocation[0].slug}`}
                   className="px-8 py-4 w-fit group  relative   bg-green-800 text-white font-bold hover:bg-orange-500 text-xl"
