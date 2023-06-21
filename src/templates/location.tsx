@@ -157,7 +157,7 @@ const Location: Template<TemplateRenderProps> = ({
 
   return (
     <>
-      <Schema document={_cpy}></Schema>
+      {/* <Schema document={_cpy}></Schema> */}
       <PageLayout _site={_site}>
         <div className="flex flex-row  bg-[#eeeeee]">
           <div className="w-1/2 flex items-center justify-center  bg-white">
