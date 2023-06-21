@@ -11,6 +11,7 @@ import FAQCard from "../FAQCard";
 import JobCard from "../JobCard";
 import PromoCard from "../PromoCard";
 import { Image } from "@yext/pages/components";
+import JobResCard from "../JobResCard";
 
 const HomePage = (_site: any) => {
   const { photoGallery } = _site._site;
@@ -42,7 +43,7 @@ const HomePage = (_site: any) => {
                 viewAllButton: true,
               },
               jobs: {
-                CardComponent: JobCard,
+                CardComponent: JobResCard,
                 viewAllButton: true,
               },
               promo: {
