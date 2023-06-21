@@ -148,11 +148,10 @@ const Location: Template<TemplateRenderProps> = ({
     c_jobToLocation,
   } = document;
   const { photoGallery } = _site;
-  console.log(JSON.stringify(c_jobToLocation));
 
   return (
     <>
-      {/* <Schema document={_cpy}></Schema> */}
+      <Schema document={_cpy}></Schema>
       <PageLayout _site={_site}>
         <div className="flex flex-row  bg-[#eeeeee]">
           <div className="w-1/2 flex items-center justify-center  bg-white">
