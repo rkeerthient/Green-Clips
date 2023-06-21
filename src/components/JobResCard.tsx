@@ -34,9 +34,13 @@ const JobResCard: CardComponent<Job> = ({
           <div>
             <p className="text-gray-400">posted on {formatDate(datePosted)}</p>
             <p className="text-[#089f45] text-sm italic">
-              {c_wageMin && c_wageMax && parseInt(c_wageMax) >= 1
-                ? `${c_wageMin} - ${c_wageMax}`
-                : `${c_wageMin}+`}
+              {c_wageMin.value && c_wageMax.value && parseInt(c_wageMax) >= 1
+                ? `Pay - $${c_wageMin.value} - $${c_wageMax.value}`
+                : `${
+                    c_wageMin.value >= 1
+                      ? `Pay - $${c_wageMin.value}+`
+                      : `Pay - Competetive`
+                  }`}
             </p>
           </div>
           <div className=" ">

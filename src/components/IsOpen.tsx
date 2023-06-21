@@ -1,6 +1,7 @@
 import * as React from "react";
+import { FiMapPin } from "react-icons/fi";
 
-const HoursText = ({ document }: any) => {
+const IsOpen = ({ document }: any) => {
   const { hours, timezone } = document;
 
   const getStatus = (currentDay: any, currentTime: any, hours: any) => {
@@ -81,30 +82,51 @@ const HoursText = ({ document }: any) => {
     return h + ":" + m;
   };
   const res = getDayName(hours, timezone);
+  console.log(res.status);
+
   return (
-    <div className="hero mt-4 w-full">
-      <div className="hero-row flex">
-        <div
-          className={
-            res.status.includes("Open")
-              ? "text-2xl text-gray-600 Hero-hoursToday storeOpen flex gap-1 items-center w-max border-l-4  pl-2 border-green-700"
-              : "text-2xl text-gray-600 Hero-hoursToday storeClosed flex gap-1 items-center w-max border-l-4 pl-2 border-red-500"
-          }
-        >
-          <p className="font-semibold text-black">
-            {res.status.toLowerCase() === "open now"
-              ? "Open Now : "
-              : res.status.toLowerCase() === "closed"
-              ? "Closed  : "
-              : res.status.toLowerCase() === "closed perm"
-              ? "Closed"
-              : ""}
-          </p>
-          {res.status.toLowerCase() !== "closed perm" && res.text}
+    <div className=" w-3/4 mx-auto bg-white py-12 px-6 flex flex-col gap-y-4 space-y-4">
+      <div className="flex flex-col text-center justify-center gap-y-4 ">
+        <div className="flex flex-row items-center justify-center">
+          <FiMapPin size={60} color="#048554" />
+          <div className="flex flex-col ">
+            <p className="text-4xl font-light uppercase">Online</p>
+            <p className="text-2xl font-bold">Check-in</p>
+          </div>
         </div>
+        {res.status.includes("Open") ? (
+          <div className="w-fit px-8 py-4 border text-xl text-white font-bold bg-[#048554] mx-auto">
+            Check In Now
+          </div>
+        ) : (
+          <div className="w-fit px-8 py-4 border text-xl bg-black text-white font-bold  mx-auto">
+            Find A Salon
+          </div>
+        )}
+      </div>
+      <div className="flex flex-row justify-center px-24">
+        {res.status.includes("Open") ? (
+          <>
+            <div className="flex flex-col text-left">
+              <div className="font-bold">Estimated wait:</div>
+              <div className="w-3/4 text-sm">
+                Check in online to add your name to the wait list before you
+                arrive!
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <div className="text-3xl font-bold">17</div>
+              <div className="text-2xl font-bold">MIN</div>
+            </div>
+          </>
+        ) : (
+          <div className="font-bold">
+            Online Check-in is currently unavailable at this salon.
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default HoursText;
+export default IsOpen;

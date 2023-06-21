@@ -29,7 +29,10 @@ import StaticMap from "../components/static-map";
 import "../index.css";
 import { FiClock, FiMapPin, FiPhone } from "react-icons/fi";
 import { BsCheck2 } from "react-icons/bs";
-
+import { Image } from "@yext/pages/components";
+import HoursText from "../components/HoursText";
+import IsOpen from "../components/IsOpen";
+import Carousel from "../components/Carousel";
 /**
  * Required when Knowledge Graph data is used for a template.
  */
@@ -50,6 +53,12 @@ export const config: TemplateConfig = {
       "slug",
       "geocodedCoordinate",
       "services",
+      "c_jobToLocation.name",
+      "c_jobToLocation.c_wageMin",
+      "c_jobToLocation.c_wageMax",
+      "c_jobToLocation.c_qualification",
+      "c_jobToLocation.slug",
+      "c_jobToLocation.landingPageUrl",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -137,51 +146,34 @@ const Location: Template<TemplateRenderProps> = ({
     mainPhone,
     geocodedCoordinate,
     services,
+    c_jobToLocation,
   } = document;
+  const { photoGallery } = _site;
+  console.log(JSON.stringify(c_jobToLocation));
 
   return (
     <>
       <PageLayout _site={_site}>
         <div className="flex flex-row  bg-[#eeeeee]">
-          <div className="w-1/2 text-center py-44 px-12 bg-white">
-            <h1 className="text-4xl font-bold">Great Clips</h1>
-            <h2 className="text-4xl font-light">Great Clips</h2>
-            <p>Open Today: 9:00am to 7:00pm</p>
-          </div>
-          <div className="w-1/2 text-center py-44  ">
-            <div className=" w-3/4 mx-auto bg-white py-14 px-8 flex flex-col gap-y-5 space-y-5">
-              <div className="flex flex-col text-center justify-center gap-y-2 ">
-                <div className="flex flex-row items-center justify-center">
-                  <FiMapPin size={60} color="#048554" />
-                  <div className="flex flex-col ">
-                    <p className="text-4xl font-light uppercase">Online</p>
-                    <p className="text-2xl font-bold">Check-in</p>
-                  </div>
-                </div>
-                <div className="w-fit px-8 py-4 border text-xl bg-[#048554] mx-auto">
-                  Check In Now
-                </div>
-              </div>
-              <div className="flex flex-row justify-center px-24">
-                <div className="flex flex-col text-left">
-                  <div className="font-bold">Estimated wait:</div>
-                  <div className="w-3/4 text-sm">
-                    Check in online to add your name to the wait list before you
-                    arrive!
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <div className="text-3xl font-bold">17</div>
-                  <div className="text-2xl font-bold">MIN</div>
-                </div>
-              </div>
+          <div className="w-1/2 flex items-center justify-center  bg-white">
+            <div className="text-left py-20 px-12 space-y-4 text-[#2d2e2d]">
+              <h1 className="text-6xl font-extrabold">Great Clips</h1>
+              <h2 className="text-6xl font-light  ">
+                {address.extraDescription}
+              </h2>
+              <p className="text-2xl">
+                <HoursText document={document} />
+              </p>
             </div>
           </div>
+          <div className="w-1/2 text-center py-20  ">
+            <IsOpen document={document}></IsOpen>
+          </div>
         </div>
-        <div className="centered-container">
+        <div className="centered-container mt-16">
           <div className="section">
-            <div className="grid grid-cols-3 gap-x-10 gap-y-10">
-              <div>
+            <div className="grid grid-cols-3 gap-x-10  ">
+              <div className="space-y-5 text-base ">
                 <div className="text-xl font-semibold mb-4">
                   Hair Salon Info
                 </div>
@@ -189,10 +181,14 @@ const Location: Template<TemplateRenderProps> = ({
                   {address.line1} <br />
                   {address.city}, {address.region} {address.postalCode}
                 </div>
-                <div className="italic">In Safeway Center</div>
-                <div>Get Directions</div>
-                <div className="flex justify-center md:justify-start leading-loose items-center text-base md:text-xl">
-                  <FiPhone />
+                <div className="italic ">In Safeway Center</div>
+                <div>
+                  <a href="" className="text-[#048554] font-bold underline">
+                    Get Directions
+                  </a>
+                </div>
+                <div className="flex justify-center md:justify-start leading-loose items-center text-base">
+                  <FiPhone className="text-[#048554]" size={20} />
                   {mainPhone && (
                     <span className="ml-2">
                       {mainPhone
@@ -207,7 +203,7 @@ const Location: Template<TemplateRenderProps> = ({
                 {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
               </div>
               <div>
-                {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
+                <Image image={photoGallery[6]} className="h-4/5"></Image>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-x-10 gap-y-10 mt-12">
@@ -269,27 +265,11 @@ const Location: Template<TemplateRenderProps> = ({
                 </div>
               </div>
             </div>
+            {c_jobToLocation && <Carousel data={c_jobToLocation} />}
           </div>
         </div>
       </PageLayout>
     </>
   );
 };
-{
-  /* <div className="bg-gray-100 p-5 space-y-12">
-<Contact address={address} phone={mainPhone}></Contact>
-{services && <List list={services}></List>}
-</div>
-<div className="col-span-2 pt-5 space-y-10">
-<div>
-  {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
-</div>
-{geocodedCoordinate && (
-  <StaticMap
-    latitude={geocodedCoordinate.latitude}
-    longitude={geocodedCoordinate.longitude}
-  ></StaticMap>
-)}
-</div> */
-}
 export default Location;

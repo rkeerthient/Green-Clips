@@ -46,6 +46,7 @@ export const config: TemplateConfig = {
       "c_qualification",
       "c_wageMin",
       "c_wageMax",
+      "c_jobToLocation.slug",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -124,7 +125,10 @@ const Job: Template<TemplateRenderProps> = ({ document }) => {
     c_qualification,
     c_wageMin,
     c_wageMax,
+    c_jobToLocation,
   } = document;
+  console.log(c_jobToLocation);
+
   return (
     <>
       <JobSchema document={document}></JobSchema>
@@ -151,6 +155,12 @@ const Job: Template<TemplateRenderProps> = ({ document }) => {
                 Save Job
                 <div className="h-1 bg-teal-900 absolute bottom-0 left-0 transition-width duration-75 group-hover:w-full"></div>
               </a>
+              <a
+                href={`/${c_jobToLocation[0].slug}`}
+                className="px-8 py-4 w-fit group  relative   bg-green-800 text-white font-bold hover:bg-orange-500 text-xl"
+              >
+                Explore this Location
+              </a>
             </div>
             <div className="flex flex-col">
               <div className="text-2xl font-bold text-[#089f45]">
@@ -166,9 +176,13 @@ const Job: Template<TemplateRenderProps> = ({ document }) => {
               <div className="text-lg font-bold text-[#089f45]">Pay range:</div>
               {/* <div className="text-base">$22-$25</div> */}
               <div className="text-base">
-                {c_wageMin && c_wageMax && parseInt(c_wageMax) >= 1
-                  ? `${c_wageMin} - ${c_wageMax}`
-                  : `${c_wageMin}+`}
+                {c_wageMin.value && c_wageMax.value && parseInt(c_wageMax) >= 1
+                  ? `$${c_wageMin.value} - $${c_wageMax.value}`
+                  : `${
+                      c_wageMin.value >= 1
+                        ? `$${c_wageMin.value}+`
+                        : `Competetive`
+                    }`}
               </div>
             </div>
             <div>
