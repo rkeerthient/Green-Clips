@@ -70,7 +70,7 @@ const MapPin: PinComponent<Location> = ({
         className="bg-gray-200 rounded-full p-4 mx-auto  "
         style={{ border: "1px solid" }}
       >
-        <BsScissors size={20} color="#089f45" className="border border-black" />
+        <BsScissors size={20} color="#089f45" />
       </div>
     </button>
   );
