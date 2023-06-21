@@ -7,6 +7,7 @@ import {
 } from "@yext/search-headless-react";
 import searchConfig from "./searchConfig";
 import Ce_site from "../types/site";
+import { ChatBot } from "./Chatbot";
 
 type Props = {
   _site?: Ce_site;
@@ -23,6 +24,9 @@ const PageLayout = ({ _site, children }: Props) => {
         </div>
         {children}
         <Footer _site={_site}></Footer>
+      </div>
+      <div className="fixed bottom-10 right-10 z-50">
+        <ChatBot configId="greatclips_JOBS" />
       </div>
     </SearchHeadlessProvider>
   );
