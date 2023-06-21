@@ -5,11 +5,11 @@ import * as React from "react";
 import Location, { Coordinate } from "../types/locations";
 import { RiDirectionFill } from "react-icons/ri";
 import { BsScissors } from "react-icons/bs";
+import Job from "../types/jobs";
 
-const JobResCard: CardComponent<Location> = ({
+const JobResCard: CardComponent<Job> = ({
   result,
 }: CardProps<any>): JSX.Element => {
-  const location = result.rawData;
   const {
     name,
     datePosted,
@@ -17,13 +17,9 @@ const JobResCard: CardComponent<Location> = ({
     c_locationName,
     landingPageUrl,
     slug,
+    c_wageMax,
+    c_wageMin,
   } = result.rawData;
-  console.log(JSON.stringify(location));
-
-  // function that takes coordinates and returns a google maps link for directions
-  const getGoogleMapsLink = (coordinate: Coordinate): string => {
-    return `https://www.google.com/maps/dir/?api=1&destination=${coordinate.latitude},${coordinate.longitude}`;
-  };
 
   return (
     <div className="p-6 border-b">
@@ -37,6 +33,11 @@ const JobResCard: CardComponent<Location> = ({
           </a>
           <div>
             <p className="text-gray-400">posted on {formatDate(datePosted)}</p>
+            <p className="text-[#089f45] text-sm italic">
+              {c_wageMin && c_wageMax && parseInt(c_wageMax) >= 1
+                ? `${c_wageMin} - ${c_wageMax}`
+                : `${c_wageMin}+`}
+            </p>
           </div>
           <div className=" ">
             <p>{c_locationName}</p>

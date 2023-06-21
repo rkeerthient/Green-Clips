@@ -23,5 +23,6 @@ export default interface Ce_site {
 	logo?: ComplexImage,
 	name: string,
 	c_footerImg?: Image,
+	photoGallery?: ComplexImage[],
 	id: string,
 }

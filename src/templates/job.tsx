@@ -44,6 +44,8 @@ export const config: TemplateConfig = {
       "landingPageUrl",
       "c_locationName",
       "c_qualification",
+      "c_wageMin",
+      "c_wageMax",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -120,6 +122,8 @@ const Job: Template<TemplateRenderProps> = ({ document }) => {
     c_jobAddress,
     landingPageUrl,
     c_qualification,
+    c_wageMin,
+    c_wageMax,
   } = document;
   return (
     <>
@@ -156,6 +160,15 @@ const Job: Template<TemplateRenderProps> = ({ document }) => {
               <div>{c_jobAddress.line1}</div>
               <div>
                 {c_jobAddress.city}, {c_jobAddress.region}
+              </div>
+            </div>
+            <div className="flex flex-row gap-2 items-baseline">
+              <div className="text-lg font-bold text-[#089f45]">Pay range:</div>
+              {/* <div className="text-base">$22-$25</div> */}
+              <div className="text-base">
+                {c_wageMin && c_wageMax && parseInt(c_wageMax) >= 1
+                  ? `${c_wageMin} - ${c_wageMax}`
+                  : `${c_wageMin}+`}
               </div>
             </div>
             <div>
