@@ -23,6 +23,8 @@ const HomePage = (_site: any) => {
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const query = urlSearchParams.get("query");
+    console.log(query);
+
     query && searchActions.setQuery(query);
     searchActions.setUniversalLimit(universalLimits);
     searchActions.setUniversal();

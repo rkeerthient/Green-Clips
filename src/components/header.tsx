@@ -2,6 +2,7 @@ import * as React from "react";
 import Cta from "../components/cta";
 import Ce_site from "../types/site";
 import { SearchBar, onSearchFunc } from "@yext/search-ui-react";
+import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 
 type Link = {
   label: string;
@@ -37,11 +38,18 @@ const Header = ({ _site }: any) => {
     setPath(currentPath);
     return () => {};
   }, []);
-
+  const state = useSearchState((state) => state.vertical.verticalKey);
+  const searchActions = useSearchActions();
   const handleSearch: onSearchFunc = (searchEventData) => {
+    const { query } = searchEventData;
+    searchActions.setQuery(query!);
     const path = window.location.pathname;
     const queryParams = new URLSearchParams(window.location.search);
-    console.log(path);
+    !state && path.includes("jobs")
+      ? (window.location.href = `/index.html?query=${query!.toString()}`)
+      : state
+      ? (searchActions.setVertical(state), searchActions.executeVerticalQuery())
+      : (searchActions.setUniversal(), searchActions.executeUniversalQuery());
   };
 
   return (
@@ -59,7 +67,7 @@ const Header = ({ _site }: any) => {
             </div>
           </nav>
           <SearchBar
-            // onSearch={handleSearch}
+            onSearch={handleSearch}
             customCssClasses={{ searchBarContainer: "-mb-2 flex-1" }}
             hideRecentSearches={true}
           ></SearchBar>
